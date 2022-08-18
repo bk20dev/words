@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import pl.bk20.words.Dictionary
+import pl.bk20.words.R
+import pl.bk20.words.adapter.WordsAdapter
 import pl.bk20.words.databinding.FragmentWordsBinding
 import pl.bk20.words.util.Unsafe
 
@@ -21,7 +24,13 @@ class WordsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // TODO: Bind views
+        val dictionary = Dictionary(requireContext(), R.array.words)
+        // TODO: Read the letter from action arguments
+        val words = dictionary.getWords('a') ?: return
+        binding.wordsList.apply {
+            adapter = WordsAdapter(words) { TODO() }
+            setHasFixedSize(true)
+        }
     }
 
     override fun onDestroyView() {
