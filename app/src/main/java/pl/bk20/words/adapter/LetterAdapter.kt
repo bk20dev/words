@@ -9,9 +9,8 @@ import pl.bk20.words.R
 
 class LetterAdapter(
     private val letters: List<Char>,
-    private val onSelect: (Char) -> Unit
-) :
-    RecyclerView.Adapter<LetterAdapter.LetterViewHolder>() {
+    private val onLetterSelected: (Char) -> Unit
+) : RecyclerView.Adapter<LetterAdapter.LetterViewHolder>() {
 
     class LetterViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val letterButton: Button = view.findViewById(R.id.letter_button)
@@ -26,7 +25,7 @@ class LetterAdapter(
     override fun onBindViewHolder(holder: LetterViewHolder, position: Int) {
         val letter = letters[position]
         holder.letterButton.text = letter.toString()
-        holder.letterButton.setOnClickListener { onSelect(letter) }
+        holder.letterButton.setOnClickListener { onLetterSelected(letter) }
     }
 
     override fun getItemCount(): Int = letters.size

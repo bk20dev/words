@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import pl.bk20.words.Dictionary
 import pl.bk20.words.R
-import pl.bk20.words.adapter.WordsAdapter
+import pl.bk20.words.adapter.WordAdapter
 import pl.bk20.words.databinding.FragmentWordsBinding
 import pl.bk20.words.util.Unsafe
 
@@ -41,7 +41,7 @@ class WordsFragment : Fragment() {
         val dictionary = Dictionary(requireContext(), R.array.words)
         val words = dictionary.getWords(letter) ?: return
         binding.wordsList.apply {
-            adapter = WordsAdapter(words) { searchWord(it) }
+            adapter = WordAdapter(words) { searchWord(it) }
             setHasFixedSize(true)
         }
     }

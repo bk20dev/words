@@ -7,10 +7,10 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import pl.bk20.words.R
 
-class WordsAdapter(
+class WordAdapter(
     private val words: List<String>,
     private val onWordSelected: (String) -> Unit
-) : RecyclerView.Adapter<WordsAdapter.WordsViewHolder>() {
+) : RecyclerView.Adapter<WordAdapter.WordsViewHolder>() {
 
     class WordsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val wordButton: Button = view.findViewById(R.id.word_button)
