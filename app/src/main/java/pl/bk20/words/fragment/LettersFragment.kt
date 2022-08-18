@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import pl.bk20.words.Dictionary
 import pl.bk20.words.R
@@ -26,7 +27,11 @@ class LettersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val dictionary = Dictionary(requireContext(), R.array.words)
         binding.letterList.apply {
-            adapter = LetterAdapter(dictionary.getLetters()) { TODO() }
+            adapter = LetterAdapter(dictionary.getLetters()) { letter ->
+                val directions =
+                    LettersFragmentDirections.actionLettersFragmentToWordsFragment(letter = letter.toString())
+                findNavController().navigate(directions)
+            }
             layoutManager = GridLayoutManager(context, 4)
             setHasFixedSize(true)
         }

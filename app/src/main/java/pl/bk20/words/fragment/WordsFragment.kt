@@ -13,6 +13,14 @@ import pl.bk20.words.util.Unsafe
 
 class WordsFragment : Fragment() {
     private var binding by Unsafe<FragmentWordsBinding>()
+    private var letter: Char = 'a'
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            letter = it.getString("letter")?.first() ?: return@let
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,8 +33,7 @@ class WordsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val dictionary = Dictionary(requireContext(), R.array.words)
-        // TODO: Read the letter from action arguments
-        val words = dictionary.getWords('a') ?: return
+        val words = dictionary.getWords(letter) ?: return
         binding.wordsList.apply {
             adapter = WordsAdapter(words) { TODO() }
             setHasFixedSize(true)
