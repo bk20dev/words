@@ -1,5 +1,7 @@
 package pl.bk20.words.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,10 @@ import pl.bk20.words.databinding.FragmentWordsBinding
 import pl.bk20.words.util.Unsafe
 
 class WordsFragment : Fragment() {
+    companion object {
+        private const val SEARCH_URL = "https://www.google.com/search?q="
+    }
+
     private var binding by Unsafe<FragmentWordsBinding>()
     private var letter: Char = 'a'
 
@@ -35,9 +41,15 @@ class WordsFragment : Fragment() {
         val dictionary = Dictionary(requireContext(), R.array.words)
         val words = dictionary.getWords(letter) ?: return
         binding.wordsList.apply {
-            adapter = WordsAdapter(words) { TODO() }
+            adapter = WordsAdapter(words) { searchWord(it) }
             setHasFixedSize(true)
         }
+    }
+
+    private fun searchWord(word: String) {
+        val uri = Uri.parse("$SEARCH_URL$word")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
     }
 
     override fun onDestroyView() {
