@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/lettersFragment">
+    app:startDestination="@id/wordsFragment">
 
     <fragment
         android:id="@+id/lettersFragment"
         android:name="pl.bk20.words.fragment.LettersFragment"
         android:label="fragment_letters"
         tools:layout="@layout/fragment_letters" />
+    <fragment
+        android:id="@+id/wordsFragment"
+        android:name="pl.bk20.words.fragment.WordsFragment"
+        android:label="fragment_words"
+        tools:layout="@layout/fragment_words" />
 </navigation>
