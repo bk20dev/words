@@ -6,16 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import pl.bk20.words.databinding.FragmentLettersBinding
+import pl.bk20.words.util.Unsafe
 
 class LettersFragment : Fragment() {
-    private var _binding: FragmentLettersBinding? = null
-    private val binding get() = _binding!!
+    private var binding by Unsafe<FragmentLettersBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLettersBinding.inflate(inflater)
+        binding = FragmentLettersBinding.inflate(inflater)
         return binding.root
     }
 
@@ -25,6 +25,6 @@ class LettersFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 }
