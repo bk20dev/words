@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/lettersFragment"
         android:name="pl.bk20.words.fragment.LettersFragment"
-        android:label="fragment_letters"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_letters">
         <action
             android:id="@+id/action_lettersFragment_to_wordsFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/wordsFragment"
         android:name="pl.bk20.words.fragment.WordsFragment"
-        android:label="fragment_words"
+        android:label="@string/words_label"
         tools:layout="@layout/fragment_words">
         <argument
             android:name="letter"

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Words</string>
+    <string name="words_label">Words starting with {letter}</string>
 </resources>
