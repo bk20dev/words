@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import pl.bk20.words.adapter.LetterAdapter
 import pl.bk20.words.databinding.FragmentLettersBinding
 import pl.bk20.words.util.Unsafe
 
@@ -20,7 +22,11 @@ class LettersFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        // TODO: Create bindings
+        binding.letterList.apply {
+            adapter = LetterAdapter(listOf('a', 'b', 'c')) { TODO() }
+            layoutManager = GridLayoutManager(context, 4)
+            setHasFixedSize(true)
+        }
     }
 
     override fun onDestroyView() {

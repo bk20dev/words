@@ -4,4 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.LettersFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/letter_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:scrollbars="vertical" />
 </FrameLayout>
